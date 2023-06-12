@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    
+    <title>Traductor</title>
+    
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
+
+    <style>
+
+
+      /* Estilos para el cuerpo y los elementos principales */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #F0F4F8;
+        color: #333333;
+      }
+
+      #wrapper {
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 10px;
+      }
+
+      /* Estilos para el título */
+      h1 {
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        position: relative;
+        font-size: 30px;
+        text-align:left;
+        margin-top: 15px;
+        margin-bottom:50px;
+        margin-left: 0px;
+        color: #2D3748;
+      }
+      
+
+         /* Estilos para el subtítulo */
+         h2 {
+        position: relative;
+        font-size: 10px;
+        font-style: italic;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        margin-left: 50px;
+        color: #0a1258;
+       
+      }
+
+
+      
+/*_______________________________BARRA SUPERIOR_______________________________*/
+
+      /* Estilos para el menú desplegable esquina 3 líneas*/
+      .dropdown {
+        position:absolute;
+        top: 25px;
+        left: 35px;
+        right: auto; /* Hint menú desplegable*/
+        display: inline-block;
+        cursor: pointer;
+        margin-top: 5px;
+        margin-left: -28px;
+        z-index: 1;
+      }
+
+
+      /* Estilos para las líneas del icono del menú esquina 3 líneas */
+      .line {
+        position: relative;
+        width: 40px;
+        height: 5px;
+        background-color: #ffffff;
+        margin-top: -3px ;
+        margin-left: 20px;
+        margin-bottom: 7px;
+        }
+
+/* Estilos para el menú barra*/
+nav {
+			background-color:  #2D3748;
+			display: flex;
+			justify-content: space-between;
+      border-radius: 15px;
+			align-items: center;
+			padding: 10px;
+		}
+
+		nav a {
+			color: #FFFFFF;
+			font-size: 16px;
+			font-weight: bold;
+			text-decoration:none;
+			margin: 0 15px;
+			padding: 10px;
+			border-radius: 5px;
+			transition: background-color 0.3s ease-in-out;
+		}
+
+		nav a:hover {
+			background-color: #F0F4F8;
+            color:  #2D3748;
+		}
+
+
+
+		/* Estilos para los contenidos */
+		.main-content {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 36px;
+			color: #333333;
+			margin-bottom: 20px;
+		}
+
+		p {
+			font-size: 18px;
+			line-height: 1.5;
+			color: #666666;
+		}
+
+
+      /* Estilos para el contenido del menú */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #FFFFFF;
+        min-width: 160px;
+        z-index: 1;
+        padding: 10px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      }
+
+      /* Estilos para los elementos del menú */
+      .dropdown-content a {
+        color: #333333;
+        padding: 5px 10px;
+        text-decoration: none;
+        display: block;
+      }
+
+      /* Estilos para resaltar el elemento activo */
+      .dropdown-content a:hover {
+        background-color: #F0F4F8;
+      }
+
+      /* Estilos para mostrar el menú cuando se pasa el mouse por encima */
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+/*______________________________________________________________________________*/
+
+
+
+/*_______________________________CUERPO TRADUCTOR_______________________________*/
+
+
+      /* Estilos para los menús desplegables */
+      select {
+        font-size: 18px;
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1 px;
+        background-color: #FFFFFF;
+        color: #424141;
+        cursor: pointer
+  
+        
+      }
+
+      /* Estilos para el botón de traducción */
+      button {
+        font-size: 20px;
+        padding: 10px 20px;
+        margin-top: 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #2D3748;
+        color: #FFFFFF;
+        cursor: pointer
+      }
+
+      button:hover{
+   animation: pulsante 1.5s infinite
+        
+      }
+      @keyframes pulsante {
+            0% {
+                box-shadow: #2D3748 0 0 0 0;
+            }
+
+            100% {
+                box-shadow: #8b80f900 0 0 0 16px;
+            }
+        }
+
+
+      /* Estilos para el cuadro de texto de entrada */
+      textarea {
+        font-size: 18px;
+        padding: 10px;
+        margin-top: 2rem;
+        border-radius: 5px;
+        border: 1 px;
+        background-color: #FFFFFF;
+        color: #333333;
+        width: 95%;
+        height: 12rem;
+        resize: none;
+      }
+
+      /* Estilos para el cuadro de texto de salida */
+      #output {
+        font-size: 18px;
+        padding: 10px;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        border: 1 px;
+        background-color: #FFFFFF;
+        color: #333333;
+        width: 95%;
+        height: 12rem;
+        resize: none;
+      }
+</style>
+
+<style>
+/*_______________________________PIE DE PÁGINA___________________________________*/
+
+.nav {
+  max-width: auto;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+
+}
+.nav:hover {
+  pointer-events:all;
+}
+.sm-header {
+  font-size: 1rem;
+  text-transform:none;
+  cursor: pointer;
+  pointer-events: auto;
+  color:#fff
+}
+.line_a {
+  width: 15rem;
+  height: 3px;
+  background-color: #fff;
+  margin-left: 2rem;
+  margin-right: auto;
+  transform: scaleX(0.2);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+.nav:hover .line_a {
+  transform: scaleX(1);
+}
+.nav-list {
+  display: flex;
+  list-style: none;
+}
+.nav-item {
+  margin-inline: 1rem;
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+.nav-item:nth-child(odd) {
+  transform: translateY(5rem);
+}
+.nav-item:nth-child(even) {
+  transform: translateY(-5rem);
+}
+.nav:hover .nav-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-link {
+  font-size: 1.5rem;
+}
+.nav-link i {
+  transition: color 0.5s;
+}
+.nav-link:hover i.fa-facebook-f {
+  color:#3b5998;
+}
+.nav-link:hover i.fa-twitter {
+  color: #1da1f2;
+}
+.nav-link:hover i.fa-google-plus-g {
+  color: #dd4b39;
+}
+.nav-link:hover i.fa-linkedin-in {
+  color: #0077b5;
+}
+/*______________________________________________________________________________*/
+
+
+    </style>
+
+<style>
+
+.footer {
+	padding-block: 50px;
+	padding-bottom: 25px;
+	background-color: #151515;
+	color: #666873;
+	margin-top: auto;
+}
+.footer__container {
+	max-width: 1160px;
+	margin: auto;
+	padding: 0 15px;
+}
+.footer__top {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	row-gap: 20px;
+}
+.footer__title {
+	font-size: 18px;
+	color: #fff;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+.footer__list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.footer__list-link {
+	transition: color 0.25s;
+}
+.footer__list-link:hover {
+	color: #fff;
+}
+.footer__divider {
+	margin-block: 25px;
+	border: none;
+	border-top: 1px solid rgba(252, 255, 255, 0.1);
+}
+.footer__bottom {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+.footer__list--bottom {
+	flex-direction: row;
+}
+
+</style>
+
+  </head>
+  <body>
+
+    <div class="dropdown">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="dropdown-content">
+        <a href="https://infotepsai.edu.co/">Sobre INFOTEP</a>
+        <a href="#">Información</a>
+        <a href="#">Sugerencias</a>
+      </div>
+  </div>
+
+
+
+    <nav>
+		<a>    </a>
+		<a href="#">Contacta a un nativo</a>
+		<a href="#">Frases comunes</a>
+		<a href="#">Música</a>
+		<a href="Proves.html">Mapa</a>
+	</nav>
+    
+
+    <div id="wrapper">
+        <h1> </h1>
+    
+      <div>
+        <select id="sourceLang">
+          <option value="en">Creole</option>
+          <option value="es">Español</option>
+          
+          
+        </select>
+        <select id="targetLang">
+          <option value="es">Español</option>
+          <option value="en">Creole</option>
+          
+          
+        </select>
+        <button onclick="translate()">Traducir</button>
+      </div>
+      <form method="post" action="buscar.php">
+        <textarea id="input" placeholder="Ingrese el texto a traducir"></textarea>
+        <textarea id="output" placeholder="Traducción"></textarea>
+
+      </form>    
+
+
+      <h1>Búsqueda en la base de datos</h1>
+	<form method="post" action="buscar.php">
+		<label for="palabra">Palabra:</label>
+		<input type="text" name="palabra" id="palabra">
+		<br>
+		<label for="resultados">Resultados:</label>
+		<input type="text" name="resultados" id="resultados" readonly>
+		<br>
+		<button type="submit" name="buscar" id="buscar">Buscar</button>
+    </div>
+
+<div></div>
+    <div>
+    <nav class="nav">
+      <h4 class="sm-header">Síguenos</h4>
+      <div class="line_a"></div>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" class="nav-link"><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link"><i class="fab fa-twitter"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link"><i class="fab fa-google-plus-g"></i></a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link"><i class="fab fa-linkedin-in"></i></a>
+        </li>
+      </ul>
+    </nav>
+
+    </div>
+
+
+
+    
+  </body>
+</html>
+

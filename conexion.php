@@ -18,4 +18,3 @@ echo "Conexión exitosa a la base de datos.";
 $connection->close();
 ?>
 
-

@@ -9,12 +9,11 @@ $connection = new mysqli($host, $username, $password, $database);
 
 // Verificar si la conexión fue exitosa
 if ($connection->connect_error) {
-    die("Error de conexión: " . $connection->connect_error);
+    $status = "Error de conexión: " . $connection->connect_error;
+} else {
+    $status = "Conexión exitosa a la base de datos.";
 }
-
-echo "Conexión exitosa a la base de datos.";
 
 // Cerrar la conexión
 $connection->close();
 ?>
-
